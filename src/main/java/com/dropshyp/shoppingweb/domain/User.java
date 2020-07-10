@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @Email:ylou7@stevens.edu
  */
 
-@Entity //declear the entity
+@Entity //define the entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
