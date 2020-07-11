@@ -1,9 +1,6 @@
 package com.dropshyp.shoppingweb.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author Yilinlou
@@ -13,9 +10,10 @@ import javax.persistence.Id;
 
 @Entity //define the entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String name;
     private String email;
     private String password;
@@ -43,7 +41,7 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
