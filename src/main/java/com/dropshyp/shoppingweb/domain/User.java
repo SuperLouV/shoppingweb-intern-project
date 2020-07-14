@@ -24,7 +24,7 @@ public class User {
     private String address_apt;
     private String address_county;
     private int address_zipcode;
-    private int phonenumber;
+    private int phone_number;
 
 
 
@@ -125,11 +125,11 @@ public class User {
         this.address_zipcode = address_zipcode;
     }
 
-    public int getPhonenumber() {
-        return phonenumber;
+    public int getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhone_number(int phone_number) {
+        this.phone_number = phone_number;
     }
 }
