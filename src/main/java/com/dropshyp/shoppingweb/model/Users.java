@@ -1,4 +1,4 @@
-package com.dropshyp.shoppingweb.domain;
+package com.dropshyp.shoppingweb.model;
 
 import javax.persistence.*;
 
@@ -9,12 +9,15 @@ import javax.persistence.*;
  */
 
 @Entity //define the entity
-public class User {
+@Table(name = "users")
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String username;
+    private String first_name;
+    private String last_name;
     private String email;
     private String password;
     private String gender;
@@ -26,14 +29,11 @@ public class User {
     private int address_zipcode;
     private int phone_number;
 
-
-
-    public User() {
+    public Users() {
     }
 
-    public User(String name, String password) {
-
-        this.name = name;
+    public Users(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -45,12 +45,28 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFirstName() {
+        return first_name;
+    }
+
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLastName() {
+        return last_name;
+    }
+
+    public void setLastName(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getEmail() {

@@ -1,14 +1,12 @@
 package com.dropshyp.shoppingweb.controller;
 
-import com.dropshyp.shoppingweb.domain.User;
+import com.dropshyp.shoppingweb.model.Users;
 import com.dropshyp.shoppingweb.service.LoginAndRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * @author Yilinlou
@@ -46,11 +44,11 @@ public class LoginAndRegisterController {
      * @Date: 7/11/20
      */
     @PostMapping("/saveUser")
-    public String saveUser(User user) {
+    public String saveUser(Users users) {
 //        User user_new=loginAndRegisterService.save(user);
-        user.setPassword(encoder.encode(user.getPassword()));
+        users.setPassword(encoder.encode(users.getPassword()));
 
-        loginAndRegisterService.save(user);
+        loginAndRegisterService.save(users);
 //        if (user_new!=null){
 //            attributes.addFlashAttribute("message", "Welcome" + user_new.getName() + "Please login");
 //        }
@@ -67,11 +65,11 @@ public class LoginAndRegisterController {
     */
     //之后要加入传递对象到前端页面
     @PostMapping("/login")
-    public String login(User user){
-        User user_check=loginAndRegisterService.findByName(user.getName());
-        if (user_check!=null){
-            String psw_check=user_check.getPassword();
-            if (encoder.matches(user.getPassword(),psw_check)){
+    public String login(Users users){
+        Users users_check = loginAndRegisterService.findByName(users.getUsername());
+        if (users_check != null){
+            String psw_check = users_check.getPassword();
+            if (encoder.matches(users.getPassword(), psw_check)){
                 System.out.println("密码验证正确");
             }else {
                 System.out.println("密码错误");
