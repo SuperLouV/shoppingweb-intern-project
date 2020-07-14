@@ -1,9 +1,8 @@
 package com.dropshyp.shoppingweb.service;
 
 import com.dropshyp.shoppingweb.dao.UserDao;
-import com.dropshyp.shoppingweb.domain.User;
+import com.dropshyp.shoppingweb.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,8 +16,6 @@ public class LoginAndRegisterService  {
     @Autowired
     private UserDao userDao;
 
-
-
     /**
      * @Description: add a user
      * @Param: [user]
@@ -26,30 +23,29 @@ public class LoginAndRegisterService  {
      * @Author: Yilin Lou
      * @Date: 7/10/20
      */
-    public User save(User user) {
-        return userDao.save(user);
+    public Users save(Users users) {
+        return userDao.save(users);
     }
 
-    
     /**
     * @Description: not be used right now
-    * @Param: [name, password]
+    * @Param: [username, password]
     * @return: com.dropshyp.shoppingweb.domain.User
     * @Author: Yilin Lou
     * @Date: 7/13/20
     */
-    public User login(String name, String password) {
-        return userDao.findByNameAndPassword(name, password);
+    public Users login(String username, String password) {
+        return userDao.findByUsernameAndPassword(username, password);
     }
 
     /**
     * @Description: findByName
-    * @Param: [name]
+    * @Param: [username]
     * @return: com.dropshyp.shoppingweb.domain.User
     * @Author: Yilin Lou
     * @Date: 7/13/20
     */
-    public User findByName(String name){
-        return userDao.findByName(name);
+    public Users findByName(String username){
+        return userDao.findByUsername(username);
     }
 }
