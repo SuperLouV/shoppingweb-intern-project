@@ -1,33 +1,55 @@
 package com.dropshyp.shoppingweb.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import java.sql.Date;
 
-/**
- * @author Yilinlou
- * @date 7/8/20 4:08 下午
- * @Email:ylou7@stevens.edu
- */
-
-@Entity //define the entity
+@Entity
 @Table(name = "users")
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @NotNull
     private String username;
+
     private String first_name;
+
     private String last_name;
+
+    @NotNull
     private String email;
+
+    @NotNull
     private String password;
+
     private String gender;
-    private String birthday;
+
+    private Date birthday;
+
     private String address_street;
+
     private String address_city;
+
     private String address_apt;
+
     private String address_county;
-    private int address_zipcode;
-    private int phone_number;
+
+    private String address_zipcode;
+
+    private String phone_number;
+
+    @Enumerated(EnumType.STRING)
+    private UserType user_type;
+
+    private String title;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shop_id")
+    private Shops shop_detail;
 
     public Users() {
     }
@@ -37,6 +59,7 @@ public class Users {
         this.password = password;
     }
 
+    @javax.persistence.Id
     public long getId() {
         return id;
     }
@@ -93,11 +116,11 @@ public class Users {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -133,19 +156,27 @@ public class Users {
         this.address_county = address_county;
     }
 
-    public int getAddress_zipcode() {
+    public String getAddress_zipcode() {
         return address_zipcode;
     }
 
-    public void setAddress_zipcode(int address_zipcode) {
+    public void setAddress_zipcode(String address_zipcode) {
         this.address_zipcode = address_zipcode;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
+
+//    public UserType getUserType() {
+//        return user_type;
+//    }
+//
+//    public void setUserType(UserType user_type) {
+//        this.user_type = user_type;
+//    }
 }

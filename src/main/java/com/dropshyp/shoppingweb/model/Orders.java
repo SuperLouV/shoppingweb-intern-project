@@ -10,11 +10,17 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private long user_id;
+
     private String status;
+
     private Time order_date;
+
     private Time shipped_date;
+
     private long shipped_number;
+
     private String created_at;
 
     public Orders() {
