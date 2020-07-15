@@ -1,7 +1,10 @@
 package com.dropshyp.shoppingweb.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -9,24 +12,35 @@ public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long order_id;
+
     private long user_id;
+
     private String status;
+
     private Time order_date;
+
     private Time shipped_date;
+
     private long shipped_number;
+
     private String created_at;
+
+    @JsonBackReference //表示生成json时该属性排除
+    @OneToMany(mappedBy = "orders",cascade = CascadeType.REFRESH)
+    private List<Order_items> order_itemsSet;
+
 
     public Orders() {
 
     }
 
-    public long getId() {
-        return id;
+    public long getOrder_id() {
+        return order_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setOrder_id(long order_id) {
+        this.order_id = order_id;
     }
 
     public long getUserId() {
