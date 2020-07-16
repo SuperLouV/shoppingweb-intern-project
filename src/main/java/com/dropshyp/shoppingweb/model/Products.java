@@ -21,9 +21,9 @@ public class Products {
 
     private String name;
 
-    private long supplier_id;
+//    private long supplier_id;
 
-    private long category_id;
+//    private long category_id;
 
     private int price;
 
@@ -49,6 +49,14 @@ public class Products {
     @OneToMany(mappedBy = "products")
     private List<Order_items> order_itemsSet;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="supplier_id",referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
+    private Suppliers suppliers;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="category_id",referencedColumnName = "category_id")//设置在Categories中的关联字段(外键)
+    private Categories categories;
+
     public long getProduct_id() {
         return product_id;
     }
@@ -65,21 +73,21 @@ public class Products {
         this.name = name;
     }
 
-    public long getSupplier_id() {
-        return supplier_id;
-    }
-
-    public void setSupplier_id(long supplier_id) {
-        this.supplier_id = supplier_id;
-    }
-
-    public long getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(long category_id) {
-        this.category_id = category_id;
-    }
+//    public long getSupplier_id() {
+//        return supplier_id;
+//    }
+//
+//    public void setSupplier_id(long supplier_id) {
+//        this.supplier_id = supplier_id;
+//    }
+//
+//    public long getCategory_id() {
+//        return category_id;
+//    }
+//
+//    public void setCategory_id(long category_id) {
+//        this.category_id = category_id;
+//    }
 
     public int getPrice() {
         return price;

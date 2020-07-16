@@ -14,7 +14,7 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long order_id;
 
-    private long user_id;
+//    private long buyer_id;
 
     private String status;
 
@@ -31,6 +31,21 @@ public class Orders {
     private List<Order_items> order_itemsSet;
 
 
+    /**
+    * @Description: link order and buyer
+    * @Param:
+    * @return:
+    * @Author: Yilin Lou
+    * @Date: 7/16/20
+    */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="buyer_id",referencedColumnName = "buyer_id")//设置在Order_items表中的关联字段(外键)
+    private Buyers buyers;
+
+    @OneToOne(mappedBy = "order", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    private ShippingAddress shippingAddress;
+
+
     public Orders() {
 
     }
@@ -43,13 +58,7 @@ public class Orders {
         this.order_id = order_id;
     }
 
-    public long getUserId() {
-        return user_id;
-    }
 
-    public void setUserId(long user_id) {
-        this.user_id = user_id;
-    }
 
     public String getStatus() {
         return status;
