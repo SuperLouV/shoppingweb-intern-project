@@ -220,5 +220,19 @@ public class Users {
         this.user_types = user_types;
     }
 
+    public Shops getShop() {
+        return shop;
+    }
 
+    public void setShop(Shops shop) {
+        this.shop = shop;
+    }
+
+    public List<Order_items> getOrder_itemsSet() {
+        return order_itemsSet;
+    }
+
+    public void setOrder_itemsSet(List<Order_items> order_itemsSet) {
+        this.order_itemsSet = order_itemsSet;
+    }
 }
