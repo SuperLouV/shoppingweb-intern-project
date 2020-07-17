@@ -21,6 +21,8 @@ public class Products {
 
     private String name;
 
+    private String description;
+
 //    private long supplier_id;
 
 //    private long category_id;
@@ -39,23 +41,27 @@ public class Products {
     private Time create_at;
 
     /**
-    * @Description: link between products and order_items
-    * @Param:
-    * @return: List
-    * @Author: Yilin Lou
-    * @Date: 7/15/20
-    */
+     * @Description: link between products and order_items
+     * @Param:
+     * @return: List
+     * @Author: Yilin Lou
+     * @Date: 7/15/20
+     */
     @JsonBackReference //表示生成json时该属性排除
     @OneToMany(mappedBy = "products")
     private List<Order_items> order_itemsSet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="supplier_id",referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
+    @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
     private Suppliers suppliers;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id",referencedColumnName = "category_id")//设置在Categories中的关联字段(外键)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")//设置在Categories中的关联字段(外键)
     private Categories categories;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "shops_products")
+    private List<Shops> shops;
 
     public long getProduct_id() {
         return product_id;
@@ -88,6 +94,39 @@ public class Products {
 //    public void setCategory_id(long category_id) {
 //        this.category_id = category_id;
 //    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Order_items> getOrder_itemsSet() {
+        return order_itemsSet;
+    }
+
+    public void setOrder_itemsSet(List<Order_items> order_itemsSet) {
+        this.order_itemsSet = order_itemsSet;
+    }
+
+    public Suppliers getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(Suppliers suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    public Categories getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Categories categories) {
+        this.categories = categories;
+    }
 
     public int getPrice() {
         return price;
@@ -127,5 +166,13 @@ public class Products {
 
     public void setCreate_at(Time create_at) {
         this.create_at = create_at;
+    }
+
+    public List<Shops> getShops() {
+        return shops;
+    }
+
+    public void setShops(List<Shops> shops) {
+        this.shops = shops;
     }
 }

@@ -1,6 +1,7 @@
 package com.dropshyp.shoppingweb.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Yilinlou
@@ -29,6 +30,11 @@ public class Shops {
      */
     @OneToOne(mappedBy = "shop", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     private Users seller;
+
+    @ManyToMany
+    @JoinTable(name = "shops_products")
+    private List<Products> products;
+
 
     public long getShop_id() {
         return shop_id;
@@ -64,5 +70,19 @@ public class Shops {
 
     private long product_id;
 
+    public Users getSeller() {
+        return seller;
+    }
 
+    public void setSeller(Users seller) {
+        this.seller = seller;
+    }
+
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
 }

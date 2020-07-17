@@ -45,7 +45,6 @@ public class Orders {
     @OneToOne(mappedBy = "order", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     private ShippingAddress shippingAddress;
 
-
     public Orders() {
 
     }
@@ -57,8 +56,6 @@ public class Orders {
     public void setOrder_id(long order_id) {
         this.order_id = order_id;
     }
-
-
 
     public String getStatus() {
         return status;
@@ -99,4 +96,6 @@ public class Orders {
     public void setCreatedAt(String created_at) {
         this.created_at = created_at;
     }
+
+
 }

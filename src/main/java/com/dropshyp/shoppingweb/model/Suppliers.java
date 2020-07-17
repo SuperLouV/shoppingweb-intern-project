@@ -50,4 +50,12 @@ public class Suppliers {
     public void setContact_name(String contact_name) {
         this.contact_name = contact_name;
     }
+
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
 }
