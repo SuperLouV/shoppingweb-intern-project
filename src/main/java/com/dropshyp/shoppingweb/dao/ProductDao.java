@@ -17,7 +17,7 @@ import java.util.List;
 public interface ProductDao extends JpaRepository<Products, Long> {
 
     /**
-     * @Description: findAllByCategories
+     * @Description: findAllByCategories        根据商品所属列表显示商品
      * @Param: [categories]
      * @return: java.util.List<com.dropshyp.shoppingweb.model.Products>
      * @Author: Yilin Lou
@@ -26,7 +26,7 @@ public interface ProductDao extends JpaRepository<Products, Long> {
     List<Products> findAllByCategories(String categories);
 
     /**
-     * @Description: deleteAllByCategories
+     * @Description: deleteAllByCategories      删除某一类商品
      * @Param: [categories]
      * @return: java.util.List<com.dropshyp.shoppingweb.model.Products>
      * @Author: Yilin Lou
