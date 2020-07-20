@@ -83,6 +83,11 @@ public class Users {
         this.username = username;
         this.password = password;
     }
+    public Users(String username, String password,String email) {
+        this.username = username;
+        this.password = password;
+        this.email=email;
+    }
 
     public long getUser_id() {
         return user_id;
