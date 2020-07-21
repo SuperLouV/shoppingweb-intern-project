@@ -52,6 +52,9 @@ public class Users {
 
     private String user_types;
 
+    private String ip_address;
+
+
     /**
      * @Description: link users and shops
      * mappedBy:users(defined in Shops.class, means a Object)
@@ -72,7 +75,7 @@ public class Users {
      * @Date: 7/15/20
      */
     @JsonBackReference //表示生成json时该属性排除
-    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Order_items> order_itemsSet;
 
 
@@ -83,10 +86,11 @@ public class Users {
         this.username = username;
         this.password = password;
     }
-    public Users(String username, String password,String email) {
+
+    public Users(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.email=email;
+        this.email = email;
     }
 
     public long getUser_id() {
@@ -239,5 +243,13 @@ public class Users {
 
     public void setOrder_itemsSet(List<Order_items> order_itemsSet) {
         this.order_itemsSet = order_itemsSet;
+    }
+
+    public String getIp_address() {
+        return ip_address;
+    }
+
+    public void setIp_address(String ip_address) {
+        this.ip_address = ip_address;
     }
 }
