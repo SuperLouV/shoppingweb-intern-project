@@ -30,15 +30,15 @@ public class OrderItems {
     * @Date: 7/15/20
     */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id",referencedColumnName = "user_id")//设置在Order_items表中的关联字段(外键)
+    @JoinColumn(name="user_id", referencedColumnName = "user_id")//设置在Order_items表中的关联字段(外键)
     private Users users;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product_id",referencedColumnName = "product_id")//设置在Order_items表中的关联字段(外键)
+    @JoinColumn(name="product_id", referencedColumnName = "product_id")//设置在Order_items表中的关联字段(外键)
     private Products products;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="order_id",referencedColumnName = "order_id")//设置在Order_items表中的关联字段(外键)
+    @JoinColumn(name="order_id", referencedColumnName = "order_id")//设置在Order_items表中的关联字段(外键)
     private Orders orders;
 
     public long getOrder_item_id() {
