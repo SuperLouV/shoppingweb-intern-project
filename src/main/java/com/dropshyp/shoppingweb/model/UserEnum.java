@@ -1,7 +1,6 @@
 package com.dropshyp.shoppingweb.model;
 
-public enum UserType {
+public enum UserEnum {
     normal,
-    premium,
-    admin,
+    premium
 }

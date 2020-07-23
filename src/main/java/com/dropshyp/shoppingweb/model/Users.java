@@ -45,11 +45,11 @@ public class Users {
 
     private String address_county;
 
-    private int address_zipcode;
+    private String address_zipcode;
 
-    private int phone_number;
+    private String phone_number;
 
-    private String user_types;
+    private UserEnum user_types;
 
     private String ip_address;
 
@@ -204,27 +204,27 @@ public class Users {
         this.address_county = address_county;
     }
 
-    public int getAddress_zipcode() {
+    public String getAddress_zipcode() {
         return address_zipcode;
     }
 
-    public void setAddress_zipcode(int address_zipcode) {
+    public void setAddress_zipcode(String address_zipcode) {
         this.address_zipcode = address_zipcode;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
-    public String getUser_types() {
+    public UserEnum getUser_types() {
         return user_types;
     }
 
-    public void setUser_types(String user_types) {
+    public void setUser_types(UserEnum user_types) {
         this.user_types = user_types;
     }
 
