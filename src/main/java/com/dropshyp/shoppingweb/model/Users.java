@@ -1,34 +1,41 @@
 package com.dropshyp.shoppingweb.model;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.List;
 
-@Entity
+/**
+ * @author Yilinlou
+ * @date 7/8/20 4:08 下午
+ * @Email:ylou7@stevens.edu
+ */
+
+@Entity //define the entity
 @Table(name = "users")
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long user_id;
 
-    @NotNull
+//    private long shop_id;
+
+    private String title;
+
     private String username;
 
     private String first_name;
 
     private String last_name;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String password;
 
     private String gender;
 
-    private Date birthday;
+    private String birthday;
 
     private String address_street;
 
@@ -38,18 +45,38 @@ public class Users {
 
     private String address_county;
 
-    private String address_zipcode;
+    private int address_zipcode;
 
-    private String phone_number;
+    private int phone_number;
 
-    @Enumerated(EnumType.STRING)
-    private UserType user_type;
+    private String user_types;
 
-    private String title;
+    private String ip_address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shop_id", referencedColumnName = "shop_id")
-    private Shops shop_detail;
+
+    /**
+     * @Description: link users and shops
+     * mappedBy:users(defined in Shops.class, means a Object)
+     * @Param:
+     * @return:
+     * @Author: Yilin Lou
+     * @Date: 7/15/20
+     */
+    @OneToOne(cascade = CascadeType.ALL)      //所有权限，删除用户则删除店
+    @JoinColumn(name = "shop_id", referencedColumnName = "shop_id")//设置在users表中的关联字段(外键)
+    private Shops shop;
+
+    /**
+     * @Description: link between order_itemsSet and users
+     * @Param:
+     * @return: set of order_itemsSet
+     * @Author: Yilin Lou
+     * @Date: 7/15/20
+     */
+    @JsonBackReference //表示生成json时该属性排除
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<OrderItems> order_itemsSet;
+
 
     public Users() {
     }
@@ -59,13 +86,34 @@ public class Users {
         this.password = password;
     }
 
-    @javax.persistence.Id
-    public long getId() {
-        return id;
+    public Users(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
+    }
+
+//    public long getShop_id() {
+//        return shop_id;
+//    }
+//
+//    public void setShop_id(long shop_id) {
+//        this.shop_id = shop_id;
+//    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getUsername() {
@@ -76,19 +124,19 @@ public class Users {
         this.username = username;
     }
 
-    public String getFirstName() {
+    public String getFirst_name() {
         return first_name;
     }
 
-    public void setFirstName(String first_name) {
+    public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
 
-    public String getLastName() {
+    public String getLast_name() {
         return last_name;
     }
 
-    public void setLastName(String last_name) {
+    public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
 
@@ -116,11 +164,11 @@ public class Users {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -156,35 +204,51 @@ public class Users {
         this.address_county = address_county;
     }
 
-    public String getAddress_zipcode() {
+    public int getAddress_zipcode() {
         return address_zipcode;
     }
 
-    public void setAddress_zipcode(String address_zipcode) {
+    public void setAddress_zipcode(int address_zipcode) {
         this.address_zipcode = address_zipcode;
     }
 
-    public String getPhone_number() {
+    public int getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(String phone_number) {
+    public void setPhone_number(int phone_number) {
         this.phone_number = phone_number;
     }
 
-//    public Shops getShop_detail() {
-//        return shop_detail;
-//    }
-//
-//    public void setShop_detail(Shops shop_detail) {
-//        this.shop_detail = shop_detail;
-//    }
+    public String getUser_types() {
+        return user_types;
+    }
 
-    //    public UserType getUserType() {
-//        return user_type;
-//    }
-//
-//    public void setUserType(UserType user_type) {
-//        this.user_type = user_type;
-//    }
+    public void setUser_types(String user_types) {
+        this.user_types = user_types;
+    }
+
+    public Shops getShop() {
+        return shop;
+    }
+
+    public void setShop(Shops shop) {
+        this.shop = shop;
+    }
+
+    public List<OrderItems> getOrder_itemsSet() {
+        return order_itemsSet;
+    }
+
+    public void setOrder_itemsSet(List<OrderItems> order_itemsSet) {
+        this.order_itemsSet = order_itemsSet;
+    }
+
+    public String getIp_address() {
+        return ip_address;
+    }
+
+    public void setIp_address(String ip_address) {
+        this.ip_address = ip_address;
+    }
 }
