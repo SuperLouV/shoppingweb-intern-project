@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "order_items")
-public class Order_items {
+public class OrderItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
