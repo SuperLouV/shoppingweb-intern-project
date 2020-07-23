@@ -49,7 +49,7 @@ public class Products {
      */
     @JsonBackReference //表示生成json时该属性排除
     @OneToMany(mappedBy = "products")
-    private List<Order_items> order_itemsSet;
+    private List<OrderItems> order_itemsSet;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
@@ -104,11 +104,11 @@ public class Products {
         this.description = description;
     }
 
-    public List<Order_items> getOrder_itemsSet() {
+    public List<OrderItems> getOrder_itemsSet() {
         return order_itemsSet;
     }
 
-    public void setOrder_itemsSet(List<Order_items> order_itemsSet) {
+    public void setOrder_itemsSet(List<OrderItems> order_itemsSet) {
         this.order_itemsSet = order_itemsSet;
     }
 

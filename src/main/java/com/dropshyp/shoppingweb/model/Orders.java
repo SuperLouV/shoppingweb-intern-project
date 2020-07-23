@@ -28,7 +28,7 @@ public class Orders {
 
     @JsonBackReference //表示生成json时该属性排除
     @OneToMany(mappedBy = "orders",cascade = CascadeType.REFRESH)
-    private List<Order_items> order_itemsSet;
+    private List<OrderItems> order_itemsSet;
 
 
     /**

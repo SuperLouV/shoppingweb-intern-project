@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Yilinlou
@@ -76,7 +75,7 @@ public class Users {
      */
     @JsonBackReference //表示生成json时该属性排除
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    private List<Order_items> order_itemsSet;
+    private List<OrderItems> order_itemsSet;
 
 
     public Users() {
@@ -237,11 +236,11 @@ public class Users {
         this.shop = shop;
     }
 
-    public List<Order_items> getOrder_itemsSet() {
+    public List<OrderItems> getOrder_itemsSet() {
         return order_itemsSet;
     }
 
-    public void setOrder_itemsSet(List<Order_items> order_itemsSet) {
+    public void setOrder_itemsSet(List<OrderItems> order_itemsSet) {
         this.order_itemsSet = order_itemsSet;
     }
 
