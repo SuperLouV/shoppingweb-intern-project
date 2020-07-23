@@ -23,9 +23,9 @@ public class LoginAndRegisterService  {
      * @Author: Yilin Lou
      * @Date: 7/10/20
      */
-    public Users save(Users users) {
-        return userDao.save(users);
-    }
+//    public Users save(Users users) {
+//        return userDao.save(users);
+//    }
 
     /**
     * @Description: not be used right now
@@ -34,9 +34,9 @@ public class LoginAndRegisterService  {
     * @Author: Yilin Lou
     * @Date: 7/13/20
     */
-    public Users login(String username, String password) {
-        return userDao.findByUsernameAndPassword(username, password);
-    }
+//    public Users login(String username, String password) {
+//        return userDao.findByUsernameAndPassword(username, password);
+//    }
 
     /**
     * @Description: findByName
@@ -45,7 +45,7 @@ public class LoginAndRegisterService  {
     * @Author: Yilin Lou
     * @Date: 7/13/20
     */
-    public Users findByName(String username){
-        return userDao.findByUsername(username);
-    }
+//    public Users findByName(String username){
+//        return userDao.findByUsername(username);
+//    }
 }

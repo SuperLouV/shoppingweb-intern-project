@@ -48,7 +48,7 @@ public class Users {
     private String title;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shop_id")
+    @JoinColumn(name = "shop_id", referencedColumnName = "shop_id")
     private Shops shop_detail;
 
     public Users() {
@@ -172,7 +172,15 @@ public class Users {
         this.phone_number = phone_number;
     }
 
-//    public UserType getUserType() {
+//    public Shops getShop_detail() {
+//        return shop_detail;
+//    }
+//
+//    public void setShop_detail(Shops shop_detail) {
+//        this.shop_detail = shop_detail;
+//    }
+
+    //    public UserType getUserType() {
 //        return user_type;
 //    }
 //
