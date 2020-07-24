@@ -63,9 +63,9 @@ public class ProducService {
     * @Author: Yilin Lou
     * @Date: 7/24/20
     */
-    public Page<Products>  findAllByCategories(String categories){
-        return productDao.findAllByCategories(categories);
-    }
+//    public Page<Products>  findAllByCategories(String categories){
+//        return productDao.findAllByCategories(categories);
+//    }
 
 
     
