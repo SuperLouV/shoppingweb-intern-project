@@ -54,6 +54,7 @@ public class ProducService {
     public Products findByProduct_id(long product_id){
         return productDao.findByProduct_id(product_id);
     }
+
     
     
     /**
@@ -65,6 +66,18 @@ public class ProducService {
     */
 //    public Page<Products>  findAllByCategories(String categories){
 //        return productDao.findAllByCategories(categories);
+//    }
+
+
+    /**
+    * @Description: This is a test, productDao already has findById()
+    * @Param: [id]
+    * @return: com.dropshyp.shoppingweb.model.Products
+    * @Author: Yilin Lou
+    * @Date: 7/24/20
+    */
+//    public Products findOne(long id) {
+//        return productDao.findById(id).get();
 //    }
 
 
