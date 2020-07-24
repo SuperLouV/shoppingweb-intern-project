@@ -1,10 +1,16 @@
 package com.dropshyp.shoppingweb.service;
-
 import com.dropshyp.shoppingweb.dao.SupplierDao;
+import com.dropshyp.shoppingweb.model.Products;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+/**
+ * This class used to add product information on post-ad.html
+ */
+
+
+
 
 /**
  * @author Yilinlou
@@ -27,4 +33,6 @@ public class ProductListService {
     public List<String> findAllContact_name() {
         return supplierDao.findAllContact_name();
     }
+
+
 }
