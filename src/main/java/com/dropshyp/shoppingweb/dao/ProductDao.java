@@ -4,6 +4,7 @@ import com.dropshyp.shoppingweb.model.Products;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Author: Yilin Lou
      * @Date: 7/17/20
      */
-    Page<Products> findAllByCategories(String categories);
+//    Page<Products> findAllByCategories(String categories);
 
 
 
@@ -36,7 +37,7 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Author: Yilin Lou
      * @Date: 7/17/20
      */
-    List<Products> deleteAllByCategories(String categories);
+//    List<Products> deleteAllByCategories(String categories);
 
     /**
      * @Description: findByProduct_id ||find one item according to product_id
@@ -45,7 +46,10 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Author: Yilin Lou
      * @Date: 7/24/20
      */
+//    Products findByProduct_id(long product_id);
+    @Query(value = "SELECt product from products where product.product_id= ?", nativeQuery = true)
     Products findByProduct_id(long id);
+
 
     /**
      * @Description: find All products, return Pages
