@@ -48,18 +48,18 @@ public class ProductController {
 
     /**
      * @Description: return Products as pages(15 items per page) by categories
-     * @param pageable
+     * @param pageable,categories_name
      * @param model
      * @param categories
      * @return
      */
-//    @GetMapping("/products/{categories}")
-//    public String findAllByCategories(@PageableDefault(size = 12, sort = {"product_id"}, direction = Sort.Direction.DESC) Pageable pageable,
-//                                      Model model, @PathVariable String categories){
-//        Page<Products> page2=producService.findAllByCategories(categories);
-//        model.addAttribute("page",page2);
-//        return "#";
-//
-//    }
+    @GetMapping("/products/{categories}")
+    public String findAllByCategories(@PageableDefault(size = 12, sort = {"product_id"}, direction = Sort.Direction.DESC) Pageable pageable,
+                                      Model model, @PathVariable String categories){
+        Page<Products> page2=producService.findByCategory_id(categories,pageable);
+        model.addAttribute("page",page2);
+        return "#";
+
+    }
 
 }

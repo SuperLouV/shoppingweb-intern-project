@@ -26,7 +26,9 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Author: Yilin Lou
      * @Date: 7/17/20
      */
-//    Page<Products> findAllByCategories(String categories);
+    @Query(value = "SELECt product from products product join product.categories_name as categories_name where categories_name= ?", nativeQuery = true)
+    Page<Products> findByCategory_id(String category_id,Pageable pageable);
+
 
 
 
