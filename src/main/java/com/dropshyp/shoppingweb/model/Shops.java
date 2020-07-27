@@ -1,5 +1,7 @@
 package com.dropshyp.shoppingweb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public class Shops {
     @OneToOne(mappedBy = "shop", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     private Users seller;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "shops_products")
     private List<Products> products;

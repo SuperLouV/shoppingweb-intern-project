@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.security.auth.login.LoginException;
@@ -22,7 +23,7 @@ import java.io.IOException;
  * @Email:ylou7@stevens.edu
  */
 @Controller
-
+@SessionAttributes("user") //import session sent "user" to other pages
 public class LoginAndRegisterController {
 
     @Autowired
