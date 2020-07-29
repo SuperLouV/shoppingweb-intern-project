@@ -2,6 +2,7 @@ package com.dropshyp.shoppingweb.service;
 
 import com.dropshyp.shoppingweb.dao.ProductDao;
 import com.dropshyp.shoppingweb.model.Products;
+import com.dropshyp.shoppingweb.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProducService {
+
     
     @Autowired
     private ProductDao productDao;
