@@ -23,9 +23,9 @@ public class Suppliers {
 
     private String contact_name;
 
-    @JsonBackReference //表示生成json时该属性排除
-    @OneToMany(mappedBy = "suppliers", cascade = CascadeType.ALL)
-    private List<Products> products;
+//    @JsonBackReference //表示生成json时该属性排除
+//    @OneToMany(mappedBy = "suppliers", cascade = CascadeType.ALL)
+//    private List<Products> products;
 
     public long getSupplier_id() {
         return supplier_id;
@@ -51,11 +51,11 @@ public class Suppliers {
         this.contact_name = contact_name;
     }
 
-    public List<Products> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Products> products) {
-        this.products = products;
-    }
+//    public List<Products> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<Products> products) {
+//        this.products = products;
+//    }
 }
