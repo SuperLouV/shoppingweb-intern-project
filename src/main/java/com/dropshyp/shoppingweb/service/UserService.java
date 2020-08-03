@@ -23,16 +23,15 @@ public class UserService {
     @Autowired
     ShopsDao shopsDao;
 
-
     /**
-    * @Description: delete_shop_uodate_user
+    * @Description: delete_shop_update_user
     * @Param: [users] return null if there is no shop
     * @return: com.dropshyp.shoppingweb.model.Users
     * @Author: Yilin Lou
     * @Date: 7/27/20
     */
     @Transactional
-    public Users delete_shop_uodate_user(Users users){
+    public Users delete_shop_update_user(Users users){
         Shops shop=users.getShop();
         if (shop==null)
             return null;

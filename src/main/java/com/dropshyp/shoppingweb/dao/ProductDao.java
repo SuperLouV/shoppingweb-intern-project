@@ -26,11 +26,8 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Author: Yilin Lou
      * @Date: 7/17/20
      */
-    @Query(value = "SELECt product from products product join product.categories_name as categories_name where categories_name= ?", nativeQuery = true)
+    @Query(value = "SELECT product from products product join product.categories_name as categories_name where categories_name= ?", nativeQuery = true)
     Page<Products> findByCategory_id(String category_id,Pageable pageable);
-
-
-
 
     /**
      * @Description: deleteAllByCategories      删除某一类商品
@@ -52,7 +49,6 @@ public interface ProductDao extends JpaRepository<Products, Long> {
     @Query(value = "SELECt product from products where product.product_id= ?", nativeQuery = true)
     Products findByProduct_id(long id);
 
-
     /**
      * @Description: find All products, return Pages
      * @Param: [pageable]
@@ -61,7 +57,4 @@ public interface ProductDao extends JpaRepository<Products, Long> {
      * @Date: 7/24/20
      */
     Page<Products> findAll(Pageable pageable);
-
-
-
 }

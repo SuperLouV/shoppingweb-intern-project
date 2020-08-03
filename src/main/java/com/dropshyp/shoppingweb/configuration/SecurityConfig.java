@@ -19,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @Email:ylou7@stevens.edu
  */
 
-
 @Configuration   //define config
 @EnableWebSecurity  //start Security
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,8 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //static resources are intercepted
         web.ignoring().antMatchers("/static/**");
     }
-
-
 
     /**
     * @Description: http url configuration
@@ -65,21 +62,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .logout()
 //                .logoutUrl("/")
-//                //back to index after lagout
+//                //back to index after logout
 //                .logoutSuccessUrl("/")
 //                .permitAll();
-
 
         //un-thymeleaf form can still submit
         http.csrf().disable();
 
-        //solve Chihnese messy code
+        //solve Chinese messy code
 //        CharacterEncodingFilter filter = new CharacterEncodingFilter();
 //        filter.setEncoding("UTF-8");
 //        filter.setForceEncoding(true);
 //        http.addFilterBefore(filter,CsrfFilter.class);
-
-
 
     }
 
@@ -88,7 +82,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
-
 
     /**
     * @Description: define encryption as BCryptPasswordEncoder
@@ -101,7 +94,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     /**
      * @Description: 认证对象
@@ -117,18 +109,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 ////        auth.inMemoryAuthentication().withUser("admin").password("111111").roles("USER");
 //    }
 
-
-
 //    @Bean
 //    public UserDetailsService systemUserService() {
 //        return new UserLoginService();
 //    }
-
-
-
-
-
-
-
 
 }
