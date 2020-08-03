@@ -16,12 +16,23 @@ spring:
     url: jdbc:mysql://localhost:3306/shoppingweb?serverTimezone=UTC
     username: root
     password: lyl961008
+#    url: jdbc:mysql://app.dropshyp.com/dpr3app_usertest?serverTimezone=UTC
+#    username: dpr3app_shopping
+#    password: dropshopping
   jpa:
     hibernate:
       ddl-auto: update
+      use-new-id-generator-mappings: false
     show-sql: true
+
+  redis:
+    host: localhost
+    port: 6379
+
 
 
 #loading static resources
 # 应该以什么样的路径来访问静态资源,这表示只有静态资源的访问路径为/static/ 时才会处理(如http://localhost:8080/static/css/base.css)
 spring.mvc.static-path-pattern: /static/**
+
+#spring.devtools.livereload.enabled = true

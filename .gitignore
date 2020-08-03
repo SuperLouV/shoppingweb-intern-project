@@ -29,3 +29,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+logs
+/logs
+/log
+
+.DS_Store

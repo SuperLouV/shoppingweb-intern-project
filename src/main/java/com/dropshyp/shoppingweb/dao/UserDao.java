@@ -1,24 +1,21 @@
 package com.dropshyp.shoppingweb.dao;
 
-import com.dropshyp.shoppingweb.domain.User;
+import com.dropshyp.shoppingweb.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Yilinlou
  * @date 7/8/20 5:07 下午
  * @Email:ylou7@stevens.edu
  */
-public interface UserDao extends JpaRepository<User, Long> {
 
-    /**
-     * search user by username
-     * @param name
-     * @return
-     */
-    List<User> findByName(String name);
+@Repository
+public interface UserDao extends JpaRepository<Users, Long> {
+
+    Users findByUsername(String username);
+
+    Users findByUsernameAndPassword(String username, String password);
+
 
 }

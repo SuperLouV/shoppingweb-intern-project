@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lyl</groupId>
-    <artifactId>sprint-boot-booklist</artifactId>
+    <artifactId>Dropshyp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sprint-boot-booklist</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Dropshyp</name>
+    <description>ShoppingWeb</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -57,6 +57,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        <!--        spring-security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- redis依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 
