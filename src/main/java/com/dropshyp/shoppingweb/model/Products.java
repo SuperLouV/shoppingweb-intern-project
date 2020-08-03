@@ -23,7 +23,7 @@ public class Products {
 
     private String description;
 
-//    private long supplier_id;
+    private long supplier_name;
 
 //    private long category_id;
 
@@ -31,10 +31,12 @@ public class Products {
 
     private int stock;
 
+
     //@Lob 通常与@Basic同时使用，提高访问速度
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] picture;
+//    @Lob
+//    @Basic(fetch = FetchType.LAZY)
+//    private byte[] picture;
+
 
     private String status;
 
@@ -51,9 +53,9 @@ public class Products {
     @OneToMany(mappedBy = "products")
     private List<OrderItems> order_itemsSet;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
-    private Suppliers suppliers;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")//设置在suppliers表中的关联字段(外键)
+//    private Suppliers suppliers;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")//设置在Categories中的关联字段(外键)
@@ -112,13 +114,13 @@ public class Products {
         this.order_itemsSet = order_itemsSet;
     }
 
-    public Suppliers getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(Suppliers suppliers) {
-        this.suppliers = suppliers;
-    }
+//    public Suppliers getSuppliers() {
+//        return suppliers;
+//    }
+//
+//    public void setSuppliers(Suppliers suppliers) {
+//        this.suppliers = suppliers;
+//    }
 
     public Categories getCategories() {
         return categories;
@@ -144,13 +146,13 @@ public class Products {
         this.stock = stock;
     }
 
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
+//    public byte[] getPicture() {
+//        return picture;
+//    }
+//
+//    public void setPicture(byte[] picture) {
+//        this.picture = picture;
+//    }
 
     public String getStatus() {
         return status;

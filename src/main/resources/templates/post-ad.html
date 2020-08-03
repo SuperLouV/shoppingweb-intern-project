@@ -271,491 +271,353 @@
     <section class="section-padding-equal-70">
         <div class="container">
             <div class="post-ad-box-layout1 light-shadow-bg">
-                <div class="post-ad-form light-box-content">
-                    <div class="post-alert alert alert-success">You have more 958 free ads.</div>
-                    <div action="#">
-                        <div class="post-section post-type">
-                            <!--                                <div class="post-ad-title">-->
-                            <!--                                    <i class="fas fa-tags"></i>-->
-                            <!--                                    <h3 class="item-title">Select Type</h3>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Ad Type-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <select class="form-control select-box">-->
-                            <!--                                                <option value="0">&#45;&#45;Select Type&#45;&#45;</option>-->
-                            <!--                                                <option value="1">Sell</option>-->
-                            <!--                                                <option value="2">Buy</option>-->
-                            <!--                                                <option value="3">Exchange</option>-->
-                            <!--                                                <option value="4">Job</option>-->
-                            <!--                                                <option value="5">To-Let</option>-->
-                            <!--                                            </select>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                        </div>
-                        <div class="post-section post-category">
-                            <div class="post-ad-title">
-                                <i class="fas fa-tags"></i>
-                                <h3 class="item-title">Select Category</h3>
+                <form  method="post" th:action="@{/saveProduct}">
+                    <div class="post-ad-form light-box-content">
+                        <div class="post-alert alert alert-success">You have more 958 free ads.</div>
+                        <div action="#">
+                            <div class="post-section post-type">
+                                <!--                                <div class="post-ad-title">-->
+                                <!--                                    <i class="fas fa-tags"></i>-->
+                                <!--                                    <h3 class="item-title">Select Type</h3>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Ad Type-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <select class="form-control select-box">-->
+                                <!--                                                <option value="0">&#45;&#45;Select Type&#45;&#45;</option>-->
+                                <!--                                                <option value="1">Sell</option>-->
+                                <!--                                                <option value="2">Buy</option>-->
+                                <!--                                                <option value="3">Exchange</option>-->
+                                <!--                                                <option value="4">Job</option>-->
+                                <!--                                                <option value="5">To-Let</option>-->
+                                <!--                                            </select>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                             </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Supplier
-                                        <span>*</span>
-                                    </label>
+                            <div class="post-section post-category">
+                                <div class="post-ad-title">
+                                    <i class="fas fa-tags"></i>
+                                    <h3 class="item-title">Select Category</h3>
                                 </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <select class="form-control select-box">
-                                            <option value="0">Select a Supplier</option>
-                                            <option th:each="contact_name:${all_contact_name}" th:text="${contact_name}"
-                                                    th:value="${contact_name}"></option>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="control-label">
+                                            Supplier
+                                            <span>*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <select class="form-control select-box">
+                                                <option value="0">Select a Supplier</option>
+                                                <option th:each="contact_name:${all_contact_name}" th:text="${contact_name}"
+                                                        th:value="${contact_name}"></option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Sub Category-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <select class="form-control select-box">-->
+                                <!--                                                <option value="0">Select a category</option>-->
+                                <!--                                                <option value="1">Air Conditioner ( AC )</option>-->
+                                <!--                                                <option value="2">Audio &amp; MP3</option>-->
+                                <!--                                                <option value="3">Cameras &amp; Camcorders</option>-->
+                                <!--                                                <option value="4">Computer Accessories</option>-->
+                                <!--                                                <option value="5">Computers &amp; Tablets</option>-->
+                                <!--                                                <option value="6">Freeze</option>-->
+                                <!--                                                <option value="7">Lighting</option>-->
+                                <!--                                                <option value="8">Mobile Accessories</option>-->
+                                <!--                                                <option value="9">Mobile Phone</option>-->
+                                <!--                                                <option value="10">Other Electronics</option>-->
+                                <!--                                                <option value="11">TV &amp; Video Accessories</option>-->
+                                <!--                                                <option value="12">TVs</option>-->
+                                <!--                                                <option value="12">Video Games &amp; Consoles</option>-->
+                                <!--                                            </select>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                             </div>
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Sub Category-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <select class="form-control select-box">-->
-                            <!--                                                <option value="0">Select a category</option>-->
-                            <!--                                                <option value="1">Air Conditioner ( AC )</option>-->
-                            <!--                                                <option value="2">Audio &amp; MP3</option>-->
-                            <!--                                                <option value="3">Cameras &amp; Camcorders</option>-->
-                            <!--                                                <option value="4">Computer Accessories</option>-->
-                            <!--                                                <option value="5">Computers &amp; Tablets</option>-->
-                            <!--                                                <option value="6">Freeze</option>-->
-                            <!--                                                <option value="7">Lighting</option>-->
-                            <!--                                                <option value="8">Mobile Accessories</option>-->
-                            <!--                                                <option value="9">Mobile Phone</option>-->
-                            <!--                                                <option value="10">Other Electronics</option>-->
-                            <!--                                                <option value="11">TV &amp; Video Accessories</option>-->
-                            <!--                                                <option value="12">TVs</option>-->
-                            <!--                                                <option value="12">Video Games &amp; Consoles</option>-->
-                            <!--                                            </select>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                        </div>
-                        <div class="post-section post-information">
-                            <div class="post-ad-title">
-                                <i class="fas fa-folder-open"></i>
-                                <h3 class="item-title">Product Information</h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Product Name
-                                        <span>*</span>
-                                    </label>
+                            <div class="post-section post-information">
+                                <div class="post-ad-title">
+                                    <i class="fas fa-folder-open"></i>
+                                    <h3 class="item-title">Product Information</h3>
                                 </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="title" id="post-title">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="control-label">
+                                            Product Name
+                                            <span>*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="title" id="post-title">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Price Type-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <select class="form-control select-box">-->
-                            <!--                                                <option value="1">Fixed</option>-->
-                            <!--                                                <option value="2">Negotiable</option>-->
-                            <!--                                                <option value="3">On Call</option>-->
-                            <!--                                            </select>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Price [$]
-                                        <span>*</span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="price" id="post-price">
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Price Type-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <select class="form-control select-box">-->
+                                <!--                                                <option value="1">Fixed</option>-->
+                                <!--                                                <option value="2">Negotiable</option>-->
+                                <!--                                                <option value="3">On Call</option>-->
+                                <!--                                            </select>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="control-label">
+                                            Price [$]
+                                            <span>*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="price" id="post-price">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Stock
-                                        <span>*</span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="price" id="post-price">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="control-label">
+                                            Stock
+                                            <span>*</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="price" id="post-price">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Condition-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <div class="form-check form-radio-btn">-->
-                            <!--                                                <input class="form-check-input" type="radio" id="exampleRadios1" name="exampleRadios1" value="new">-->
-                            <!--                                                <label class="form-check-label" for="exampleRadios1">-->
-                            <!--                                                    New-->
-                            <!--                                                </label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-radio-btn">-->
-                            <!--                                                <input class="form-check-input" type="radio" id="exampleRadios2" name="exampleRadios1" value="used">-->
-                            <!--                                                <label class="form-check-label" for="exampleRadios2">-->
-                            <!--                                                    Used-->
-                            <!--                                                </label>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Brand-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <select class="form-control select-box">-->
-                            <!--                                                <option value="0">- Select an Option -</option>-->
-                            <!--                                                <option value="1">Apple</option>-->
-                            <!--                                                <option value="2">Samsung</option>-->
-                            <!--                                                <option value="3">Sony</option>-->
-                            <!--                                                <option value="4">LG</option>-->
-                            <!--                                                <option value="5">Acer</option>-->
-                            <!--                                                <option value="6">BenQ</option>-->
-                            <!--                                                <option value="7">Asus</option>-->
-                            <!--                                                <option value="8">Blackberry</option>-->
-                            <!--                                                <option value="9">Google Nexus</option>-->
-                            <!--                                                <option value="10">HTC</option>-->
-                            <!--                                                <option value="11">Huawei</option>-->
-                            <!--                                                <option value="12">Lenovo</option>-->
-                            <!--                                                <option value="13">Motorola</option>-->
-                            <!--                                                <option value="14">Nokia</option>-->
-                            <!--                                                <option value="15">Sony Ericsson</option>-->
-                            <!--                                                <option value="15">HP</option>-->
-                            <!--                                                <option value="15">Other Brand</option>-->
-                            <!--                                            </select>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Features-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list1" value="camera">-->
-                            <!--                                                <label class="form-check-label" for="features-list1">Camera</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list2" value="touch_screen">-->
-                            <!--                                                <label class="form-check-label" for="features-list2">Touch Screen</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list3" value="3g">-->
-                            <!--                                                <label class="form-check-label" for="features-list3">3G</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list4" value="4g">-->
-                            <!--                                                <label class="form-check-label" for="features-list4">4G</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list5" value="bluetooth">-->
-                            <!--                                                <label class="form-check-label" for="features-list5">Bluetooth</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list6" value="dual_sim">-->
-                            <!--                                                <label class="form-check-label" for="features-list6">Dual Sim</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list7" value="dual_lens_camera">-->
-                            <!--                                                <label class="form-check-label" for="features-list7">Dual Lens Camera</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list8" value="expandable_memory">-->
-                            <!--                                                <label class="form-check-label" for="features-list8">Expandable Memory</label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-check-box">-->
-                            <!--                                                <input class="form-check-input" type="checkbox" id="features-list9" value="fingerprint_sensor">-->
-                            <!--                                                <label class="form-check-label" for="features-list9">Fingerprint Sensor</label>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <div class="col-sm-3">-->
-                            <!--                                        <label class="control-label">-->
-                            <!--                                            Authenticity-->
-                            <!--                                            <span>*</span>-->
-                            <!--                                        </label>-->
-                            <!--                                    </div>-->
-                            <!--                                    <div class="col-sm-9">-->
-                            <!--                                        <div class="form-group">-->
-                            <!--                                            <div class="form-check form-radio-btn">-->
-                            <!--                                                <input class="form-check-input" type="radio" id="exampleRadios3" name="exampleRadios2" value="original">-->
-                            <!--                                                <label class="form-check-label" for="exampleRadios3">-->
-                            <!--                                                    Original-->
-                            <!--                                                </label>-->
-                            <!--                                            </div>-->
-                            <!--                                            <div class="form-check form-radio-btn">-->
-                            <!--                                                <input class="form-check-input" type="radio" id="exampleRadios4" name="exampleRadios2" value="copy">-->
-                            <!--                                                <label class="form-check-label" for="exampleRadios4">-->
-                            <!--                                                    Copy-->
-                            <!--                                                </label>-->
-                            <!--                                            </div>-->
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Description
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Condition-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <div class="form-check form-radio-btn">-->
+                                <!--                                                <input class="form-check-input" type="radio" id="exampleRadios1" name="exampleRadios1" value="new">-->
+                                <!--                                                <label class="form-check-label" for="exampleRadios1">-->
+                                <!--                                                    New-->
+                                <!--                                                </label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-radio-btn">-->
+                                <!--                                                <input class="form-check-input" type="radio" id="exampleRadios2" name="exampleRadios1" value="used">-->
+                                <!--                                                <label class="form-check-label" for="exampleRadios2">-->
+                                <!--                                                    Used-->
+                                <!--                                                </label>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Brand-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <select class="form-control select-box">-->
+                                <!--                                                <option value="0">- Select an Option -</option>-->
+                                <!--                                                <option value="1">Apple</option>-->
+                                <!--                                                <option value="2">Samsung</option>-->
+                                <!--                                                <option value="3">Sony</option>-->
+                                <!--                                                <option value="4">LG</option>-->
+                                <!--                                                <option value="5">Acer</option>-->
+                                <!--                                                <option value="6">BenQ</option>-->
+                                <!--                                                <option value="7">Asus</option>-->
+                                <!--                                                <option value="8">Blackberry</option>-->
+                                <!--                                                <option value="9">Google Nexus</option>-->
+                                <!--                                                <option value="10">HTC</option>-->
+                                <!--                                                <option value="11">Huawei</option>-->
+                                <!--                                                <option value="12">Lenovo</option>-->
+                                <!--                                                <option value="13">Motorola</option>-->
+                                <!--                                                <option value="14">Nokia</option>-->
+                                <!--                                                <option value="15">Sony Ericsson</option>-->
+                                <!--                                                <option value="15">HP</option>-->
+                                <!--                                                <option value="15">Other Brand</option>-->
+                                <!--                                            </select>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Features-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list1" value="camera">-->
+                                <!--                                                <label class="form-check-label" for="features-list1">Camera</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list2" value="touch_screen">-->
+                                <!--                                                <label class="form-check-label" for="features-list2">Touch Screen</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list3" value="3g">-->
+                                <!--                                                <label class="form-check-label" for="features-list3">3G</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list4" value="4g">-->
+                                <!--                                                <label class="form-check-label" for="features-list4">4G</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list5" value="bluetooth">-->
+                                <!--                                                <label class="form-check-label" for="features-list5">Bluetooth</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list6" value="dual_sim">-->
+                                <!--                                                <label class="form-check-label" for="features-list6">Dual Sim</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list7" value="dual_lens_camera">-->
+                                <!--                                                <label class="form-check-label" for="features-list7">Dual Lens Camera</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list8" value="expandable_memory">-->
+                                <!--                                                <label class="form-check-label" for="features-list8">Expandable Memory</label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-check-box">-->
+                                <!--                                                <input class="form-check-input" type="checkbox" id="features-list9" value="fingerprint_sensor">-->
+                                <!--                                                <label class="form-check-label" for="features-list9">Fingerprint Sensor</label>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-sm-3">-->
+                                <!--                                        <label class="control-label">-->
+                                <!--                                            Authenticity-->
+                                <!--                                            <span>*</span>-->
+                                <!--                                        </label>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="form-group">-->
+                                <!--                                            <div class="form-check form-radio-btn">-->
+                                <!--                                                <input class="form-check-input" type="radio" id="exampleRadios3" name="exampleRadios2" value="original">-->
+                                <!--                                                <label class="form-check-label" for="exampleRadios3">-->
+                                <!--                                                    Original-->
+                                <!--                                                </label>-->
+                                <!--                                            </div>-->
+                                <!--                                            <div class="form-check form-radio-btn">-->
+                                <!--                                                <input class="form-check-input" type="radio" id="exampleRadios4" name="exampleRadios2" value="copy">-->
+                                <!--                                                <label class="form-check-label" for="exampleRadios4">-->
+                                <!--                                                    Copy-->
+                                <!--                                                </label>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="control-label">
+                                            Description
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
                                         <textarea name="description" class="form-control textarea" id="description"
                                                   cols="30" rows="8"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                            <div class="post-section post-features">-->
-                        <!--                                <div class="post-ad-title">-->
-                        <!--                                    <i class="fas fa-list-ul"></i>-->
-                        <!--                                    <h3 class="item-title">Features</h3>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="row">-->
-                        <!--                                    <div class="col-sm-3">-->
-                        <!--                                        <label class="control-label">-->
-                        <!--                                            Features List-->
-                        <!--                                        </label>-->
-                        <!--                                    </div>-->
-                        <!--                                    <div class="col-sm-9">-->
-                        <!--                                        <div class="form-group">-->
-                        <!--                                            <textarea name="description" class="form-control textarea" id="description2" cols="30" rows="5"></textarea>-->
-                        <!--                                            <div class="help-text">-->
-                        <!--                                                <span>Write a feature in each line eg.</span>-->
-                        <!--                                                <span>Feature 1</span>-->
-                        <!--                                                <span>Feature 2</span>-->
-                        <!--                                                <span>....</span>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <div class="post-section post-img">
-                            <div class="post-ad-title">
-                                <i class="far fa-image"></i>
-                                <h3 class="item-title">Images</h3>
-                            </div>
-                            <div >
-                                <div class="file-loading">
-                                    <input id="file-0c" class="file" type="file" multiple data-min-file-count="3" data-theme="fas">
-                                </div>
-                                <hr>
-
-                                <div class="img-upload-instruction alert alert-danger">
-                                    <p>Recommended image size to (870x493)px</p>
-                                    <p>Image maximum size 3 MB.</p>
-                                    <p>Allowed image type (png, jpg, jpeg).</p>
-                                    <p>You can upload up to 5 images.</p>
-                                </div>
-                                <hr>
-                            </div>
-
-                        </div>
-
-                        <div class="post-section post-contact">
-                            <div class="post-ad-title">
-                                <i class="fas fa-users"></i>
-                                <h3 class="item-title">Contact Details</h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        State
-                                        <span>*</span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <select class="form-control select-box">
-                                            <option value="0">Select State</option>
-                                            <option value="1">California</option>
-                                            <option value="2">Florida</option>
-                                            <option value="3">Hawaii</option>
-                                            <option value="4">Indiana</option>
-                                            <option value="5">Kansas</option>
-                                            <option value="6">Michigan</option>
-                                            <option value="7">New Jersey</option>
-                                            <option value="8">New Mexico</option>
-                                            <option value="9">New York</option>
-                                            <option value="10">Pennsylvania</option>
-                                            <option value="11">Texas</option>
-                                            <option value="12">Washington</option>
-                                            <option value="13">Wyoming</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        City
-                                        <span>*</span>
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <select class="form-control select-box">
-                                            <option value="0">Select City</option>
-                                            <option value="1">Los Angeles</option>
-                                            <option value="2">LAX/LA Beaches</option>
-                                            <option value="3">San Diego</option>
-                                            <option value="4">San Jose</option>
-                                            <option value="5">San Francisco</option>
-                                            <option value="6">Fresno</option>
-                                            <option value="7">Sacramento</option>
-                                            <option value="8">Oakland</option>
-                                            <option value="9">Bakersfield</option>
-                                            <option value="10">Riverside</option>
-                                            <option value="11">Eureka</option>
-                                            <option value="12">Death Valley</option>
-                                            <option value="12">Mammoth Lakes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Zip Code
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" value="201301" class="form-control" name="zipcode"
-                                               id="post-zip">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Address
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <textarea name="address" class="form-control textarea" id="address" cols="30"
-                                                  rows="2">Melbourne</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Phone
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" value="09988434436" class="form-control" name="phone"
-                                               id="phone">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Whatsapp Number
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="text" value="09985434436" class="form-control" name="whatsapp"
-                                               id="whatsapp">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Email
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="email" value="radiustheme@gmail.com" class="form-control"
-                                               name="email" id="email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <label class="control-label">
-                                        Map
-                                    </label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <div id="googleMap" class="google-map"
-                                             style="width: 100%; height: 400px;"></div>
-                                        <div class="form-check form-check-box">
-                                            <input class="form-check-input" type="checkbox" id="map">
-                                            <label class="form-check-label" for="map">Don't show the Map</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-
+                            <!--                            <div class="post-section post-features">-->
+                            <!--                                <div class="post-ad-title">-->
+                            <!--                                    <i class="fas fa-list-ul"></i>-->
+                            <!--                                    <h3 class="item-title">Features</h3>-->
+                            <!--                                </div>-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <div class="col-sm-3">-->
+                            <!--                                        <label class="control-label">-->
+                            <!--                                            Features List-->
+                            <!--                                        </label>-->
+                            <!--                                    </div>-->
+                            <!--                                    <div class="col-sm-9">-->
+                            <!--                                        <div class="form-group">-->
+                            <!--                                            <textarea name="description" class="form-control textarea" id="description2" cols="30" rows="5"></textarea>-->
+                            <!--                                            <div class="help-text">-->
+                            <!--                                                <span>Write a feature in each line eg.</span>-->
+                            <!--                                                <span>Feature 1</span>-->
+                            <!--                                                <span>Feature 2</span>-->
+                            <!--                                                <span>....</span>-->
+                            <!--                                            </div>-->
+                            <!--                                        </div>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="post-section post-img">
+                                <div class="post-ad-title">
+                                    <i class="far fa-image"></i>
+                                    <h3 class="item-title">Images</h3>
                                 </div>
-                                <div class="col-sm-9">
-                                    <div class="form-group">
-                                        <input type="submit" class="submit-btn" value="Submit Listing">
+                                <div >
+                                    <div class="file-loading">
+                                        <input id="file-0c" class="file" type="file" multiple data-min-file-count="3" data-theme="fas">
+                                    </div>
+                                    <hr>
+
+                                    <div class="img-upload-instruction alert alert-danger">
+                                        <p>Recommended image size to (870x493)px</p>
+                                        <p>Image maximum size 3 MB.</p>
+                                        <p>Allowed image type (png, jpg, jpeg).</p>
+                                        <p>You can upload up to 5 images.</p>
+                                    </div>
+                                    <hr>
+                                </div>
+
+                            </div>
+
+                            <div class="post-section post-contact">
+
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <input type="submit" class="submit-btn" value="Submit Listing">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+
+                </form>
         </div>
     </section>
     <!--=====================================-->
