@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/shoppingweb?serverTimezone=UTC
     username: root
-    password: lyl961008
+    password: abcd1234
 #    url: jdbc:mysql://app.dropshyp.com/dpr3app_usertest?serverTimezone=UTC
 #    username: dpr3app_shopping
 #    password: dropshopping

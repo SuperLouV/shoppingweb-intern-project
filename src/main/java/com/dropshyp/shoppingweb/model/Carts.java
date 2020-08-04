@@ -24,7 +24,7 @@ public class Carts {
     private Buyers buyers;
 
     @JsonBackReference //表示生成json时该属性排除
-    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "carts", cascade = CascadeType.ALL)
     private List<Products> products;
 
     public long cart_id() {
