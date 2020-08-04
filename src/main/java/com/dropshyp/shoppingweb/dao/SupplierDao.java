@@ -25,8 +25,11 @@ public interface SupplierDao extends JpaRepository<Suppliers, Long> {
      * @Date: 7/21/20
      */
 //    List<String> findDistinctByContact_name(String contact_name);
-    @Query(value = "SELECt distinct contact_name from suppliers", nativeQuery = true)
+    @Query(value = "SELECT distinct contact_name from suppliers", nativeQuery = true)
     List<String> findAllContact_name();
+
+
+
     /**
      * find a Object according to contact_name
      *

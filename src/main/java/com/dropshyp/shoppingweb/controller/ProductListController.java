@@ -1,5 +1,6 @@
 package com.dropshyp.shoppingweb.controller;
 
+import com.dropshyp.shoppingweb.model.Suppliers;
 import com.dropshyp.shoppingweb.service.ProductListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

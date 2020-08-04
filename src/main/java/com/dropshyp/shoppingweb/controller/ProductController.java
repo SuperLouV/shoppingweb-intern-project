@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @author Yilinlou
@@ -59,6 +60,10 @@ public class ProductController {
         Page<Products> page2=producService.findByCategory_id(categories,pageable);
         model.addAttribute("page",page2);
         return "#";
+    }
+
+    @PostMapping("/saveProducts")
+    public void saveProduct(){
 
     }
 

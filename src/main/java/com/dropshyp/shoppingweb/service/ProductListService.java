@@ -43,12 +43,12 @@ public class ProductListService {
     public List<String> findAllContact_name() {
         List list = new ArrayList<>();
         if (redisUtil.hasKey("allContact_name")){
-            list= redisList.get("allContact_name",0,-1);
+            list = redisList.get("allContact_name",0,-1);
             System.out.println("read from redis");
         }
         else {
             list=supplierDao.findAllContact_name();
-            redisList.set("allContact_name",list);
+            redisList.set("allContact_name", list);
             System.out.println("read from database");
         }
         return list;
@@ -66,6 +66,8 @@ public class ProductListService {
     public Suppliers supplier_save(Suppliers suppliers) {
         return supplierDao.save(suppliers);
     }
+
+
 
 
 }
