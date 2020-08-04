@@ -103,4 +103,18 @@ public class Buyers {
     public void setShippingAddresses(List<ShippingAddress> shippingAddresses) {
         this.shippingAddresses = shippingAddresses;
     }
+
+    /**
+     * @author Haodong Wu
+     * @date 8/04/20
+     * @Email:hwu38@stevens.edu
+     */
+
+    @OneToOne(cascade = CascadeType.ALL)      //所有权限，删除用户则删除购物车
+    @JoinColumn(name = "cart_id", referencedColumnName = "cart_id")//设置在buyers表中的关联字段(外键)
+    private Carts cart;
+
+    @JsonBackReference //表示生成json时该属性排除
+    @OneToMany(mappedBy = "buyers", cascade = CascadeType.ALL)
+    private List<CartItems> cart_itemsSet;
 }
