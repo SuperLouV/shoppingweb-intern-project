@@ -43,6 +43,14 @@ public class Products {
     private Time create_at;
 
     /**
+     * @author Haodong Wu
+     * @date 8/04/20
+     * @Email:hwu38@stevens.edu
+     */
+    @JsonBackReference //表示生成json时该属性排除
+    @OneToMany(mappedBy = "products")
+    private List<CartItems> cart_itemsSet;
+    /**
      * @Description: link between products and order_items
      * @Param:
      * @return: List
