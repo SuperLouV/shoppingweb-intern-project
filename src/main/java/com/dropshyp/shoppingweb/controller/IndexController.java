@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping("/index.html")
-    public String toIndex() {
+    public String visitIndex() {
         return "index";
     }
 
@@ -22,7 +22,7 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/")
-    public String index(){
+    public String visitIndex_2(){
         return "forward:/index.html";
     }
 }
