@@ -16,14 +16,15 @@ import java.util.List;
 public class Products {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long product_id;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String product_id;
 
     private String name;
 
     private String description;
 
-    private long supplier_name;
+
+    private String supplier_name;
 
 //    private long category_id;
 
@@ -40,7 +41,7 @@ public class Products {
 
     private String status;
 
-    private Time create_at;
+    private String create_at;
 
     /**
      * @author Haodong Wu
@@ -73,11 +74,11 @@ public class Products {
     @JoinTable(name = "shops_products")
     private List<Shops> shops;
 
-    public long getProduct_id() {
+    public String getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(long product_id) {
+    public void setProduct_id(String product_id) {
         this.product_id = product_id;
     }
 
@@ -170,11 +171,11 @@ public class Products {
         this.status = status;
     }
 
-    public Time getCreate_at() {
+    public String getCreate_at() {
         return create_at;
     }
 
-    public void setCreate_at(Time create_at) {
+    public void setCreate_at(String create_at) {
         this.create_at = create_at;
     }
 
@@ -184,5 +185,21 @@ public class Products {
 
     public void setShops(List<Shops> shops) {
         this.shops = shops;
+    }
+
+    public String getSupplier_name() {
+        return supplier_name;
+    }
+
+    public void setSupplier_name(String supplier_name) {
+        this.supplier_name = supplier_name;
+    }
+
+    public List<CartItems> getCart_itemsSet() {
+        return cart_itemsSet;
+    }
+
+    public void setCart_itemsSet(List<CartItems> cart_itemsSet) {
+        this.cart_itemsSet = cart_itemsSet;
     }
 }

@@ -19,9 +19,25 @@ public class Categories {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long category_id;
 
-    private String categories_name;
+    private String main_category;
 
-    private String description;
+    private String sub_category;
+
+    public String getMain_category() {
+        return main_category;
+    }
+
+    public void setMain_category(String main_category) {
+        this.main_category = main_category;
+    }
+
+    public String getSub_category() {
+        return sub_category;
+    }
+
+    public void setSub_category(String sub_category) {
+        this.sub_category = sub_category;
+    }
 
     @JsonBackReference //表示生成json时该属性排除
     @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
@@ -35,21 +51,6 @@ public class Categories {
         this.category_id = category_id;
     }
 
-    public String getCategories_name() {
-        return categories_name;
-    }
-
-    public void setCategories_name(String categories_name) {
-        this.categories_name = categories_name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public List<Products> getProducts() {
         return products;

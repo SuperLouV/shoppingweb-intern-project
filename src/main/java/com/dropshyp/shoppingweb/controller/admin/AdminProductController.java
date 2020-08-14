@@ -3,6 +3,7 @@ package com.dropshyp.shoppingweb.controller.admin;
 import com.dropshyp.shoppingweb.model.Pictures;
 import com.dropshyp.shoppingweb.model.Products;
 import com.dropshyp.shoppingweb.service.AdminProductService;
+import com.dropshyp.shoppingweb.service.ProducService;
 import com.dropshyp.shoppingweb.service.ProductListService;
 import com.sun.org.glassfish.gmbal.ParameterNames;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 
 import java.io.*;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +30,7 @@ import java.util.*;
 
 @Controller
 public class AdminProductController {
+
     String product_id;
 
     @Autowired
@@ -38,21 +39,37 @@ public class AdminProductController {
     @Autowired
     private AdminProductService adminProductService;
 
+    @Autowired
+    private ProducService producService;
+
+    /**
+     * @Description: visitAdminIndex
+     * @Param: []
+     * @return: java.lang.String
+     * @Author: Yilin Lou
+     * @Date: 8/14/20
+     */
     @RequestMapping("/admin/index")
     public String visitAdminIndex() {
         return "/admin/frame";
     }
 
 
+    /**
+     * @Description: visit GoodsAdd HTML and send UUID as product_id
+     * @Param: [model]
+     * @return: java.lang.String
+     * @Author: Yilin Lou
+     * @Date: 8/14/20
+     */
     @GetMapping("/admin/tgls/goodsManage/goods_add.html")
     public String visitGoodsAdd(Model model) {
         List<String> all_contact_name = productListService.findAllContact_name();
         model.addAttribute("all_contact_name", all_contact_name);
         System.out.println(all_contact_name);
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        System.out.println("uuid"+uuid);
+        System.out.println("uuid" + uuid);
         model.addAttribute("product_id", uuid);
-
         return "/admin/tgls/goodsManage/goods_add.html";
     }
 
@@ -61,90 +78,100 @@ public class AdminProductController {
     public String addGoods(Products products, Model model) {
         List<String> all_contact_name = productListService.findAllContact_name();
         model.addAttribute("all_contact_name", all_contact_name);
+        System.out.println(products.getSupplier_name());
+        System.out.println(products.getProduct_id());
         System.out.println(products.getName());
+        System.out.println(products.getPrice());
+        System.out.println(products.getStock());
+        System.out.println(products.getDescription());
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = simpleDateFormat.format(date);
+        products.setCreate_at(dateStr);
+        producService.saveProduct(products);
         return "/admin/tgls/goodsManage/goods_add.html";
     }
 
 
-
-
-
     /**
-    * @Description: upload picture
-    * @Param: [file, request]
-    * @return: java.util.Map
-    * @Author: Yilin Lou
-    * @Date: 8/13/20
-    */
+     * @Description: upload picture
+     * @Param: [file, request]
+     * @return: java.util.Map
+     * @Author: Yilin Lou
+     * @Date: 8/13/20
+     */
     @ResponseBody       //return JSON
     @RequestMapping("upload-picture")
-    public Map upload(MultipartFile file, Pictures picture){
-        System.out.println("product_id :"+ product_id);
+    public Map upload(MultipartFile file, Pictures picture) {
+        System.out.println("product_id :" + product_id);
         picture.setProduct_id(product_id);
-        String prefix="";
-        String dateStr="";
-        //保存上传
+        String prefix = "";
+        String dateStr = "";
         OutputStream out = null;
-        InputStream fileInput=null;
-        try{
-            if(file!=null){
+        InputStream fileInput = null;
+        try {
+            if (file != null) {
                 String originalName = file.getOriginalFilename();
-                prefix=originalName.substring(originalName.lastIndexOf(".")+1);
-                Date date = new Date();
+                prefix = originalName.substring(originalName.lastIndexOf(".") + 1);
+                //uuid
                 String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+                //data
+                Date date = new Date();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 dateStr = simpleDateFormat.format(date);
                 File path = new File(ResourceUtils.getURL("classpath:").getPath());
-                File upload = new File(path.getAbsolutePath(),"static/img/productsIMG/");
-                String filepath = upload.getAbsolutePath() +"/"+ dateStr+"/"+uuid+"." + prefix;
-                File files=new File(filepath);
+                File upload = new File(path.getAbsolutePath(), "static/img/productsIMG/");
+                String filepath = upload.getAbsolutePath() + "/" + dateStr + "/" + uuid + "." + prefix;
+                File files = new File(filepath);
                 System.out.println(filepath);
-                if(!files.getParentFile().exists()){
+                if (!files.getParentFile().exists()) {
                     files.getParentFile().mkdirs();
                     System.out.println("getparentfile");
                 }
                 file.transferTo(files);
-                Map<String,Object> map2=new HashMap<>();
-                Map<String,Object> map=new HashMap<>();
-                map.put("code",0);
-                map.put("msg","");
-                map.put("data",map2);
-                map2.put("src",upload.getAbsolutePath() +"/"+ dateStr+"/"+uuid+"." + prefix);
+                Map<String, Object> map2 = new HashMap<>();
+                Map<String, Object> map = new HashMap<>();
+                map.put("code", 0);
+                map.put("msg", "");
+                map.put("data", map2);
+                map2.put("src", upload.getAbsolutePath() + "/" + dateStr + "/" + uuid + "." + prefix);
                 System.out.println(map);
                 picture.setPicture_url(filepath);
-                Pictures picture1=adminProductService.save(picture);
-                System.out.println(picture1.getPicture_id());
-                System.out.println(picture1.getPicture_url());
-                System.out.println(picture1.getProduct_id());
+                Pictures picture1 = adminProductService.save(picture);
                 return map;
             }
-
-        }catch (Exception e){
-        }finally{
+        } catch (Exception e) {
+        } finally {
             try {
-                if(out!=null){
+                if (out != null) {
                     out.close();
                 }
-                if(fileInput!=null){
+                if (fileInput != null) {
                     fileInput.close();
                 }
             } catch (IOException e) {
             }
         }
-        Map<String,Object> map=new HashMap<>();
-        map.put("code",1);
-        map.put("msg","");
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 1);
+        map.put("msg", "");
         return map;
 
     }
+
+    /**
+     * @Description: ajax url used to send product_id from front-end
+     * @Param: [request]
+     * @return: void
+     * @Author: Yilin Lou
+     * @Date: 8/14/20
+     */
     @ResponseBody
-    @RequestMapping(value="product/getProduct_id",method = RequestMethod.POST)
-    public void get_productId(HttpServletRequest request){
-        String id=request.getParameter("product_id");
-        this.product_id=id;
+    @RequestMapping(value = "product/getProduct_id", method = RequestMethod.POST)
+    public void get_productId(HttpServletRequest request) {
+        String id = request.getParameter("product_id");
+        this.product_id = id;
     }
-
-
 
 
 }
