@@ -1,26 +1,25 @@
 package com.dropshyp.shoppingweb.controller.admin;
 
+import com.dropshyp.shoppingweb.model.Pictures;
 import com.dropshyp.shoppingweb.model.Products;
+import com.dropshyp.shoppingweb.service.AdminProductService;
 import com.dropshyp.shoppingweb.service.ProductListService;
 import com.sun.org.glassfish.gmbal.ParameterNames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
-import java.io.File;
+import java.io.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @author Yilinlou
@@ -31,8 +30,13 @@ import java.util.List;
 
 @Controller
 public class AdminProductController {
+    String product_id;
+
     @Autowired
     private ProductListService productListService;
+
+    @Autowired
+    private AdminProductService adminProductService;
 
     @RequestMapping("/admin/index")
     public String visitAdminIndex() {
@@ -45,6 +49,10 @@ public class AdminProductController {
         List<String> all_contact_name = productListService.findAllContact_name();
         model.addAttribute("all_contact_name", all_contact_name);
         System.out.println(all_contact_name);
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        System.out.println("uuid"+uuid);
+        model.addAttribute("product_id", uuid);
+
         return "/admin/tgls/goodsManage/goods_add.html";
     }
 
@@ -57,63 +65,85 @@ public class AdminProductController {
         return "/admin/tgls/goodsManage/goods_add.html";
     }
 
-//    @RequestMapping("admin/product/uploadFile")
-    public String uploadFile(@RequestParam("file") MultipartFile file,Model model) {
-        // 原始图片名称
-        System.out.println("test");
-        if (file.isEmpty()) {
-            return "上传失败，请选择文件";
-        }
-        String fileName = file.getOriginalFilename();
-
-        // 存储路径
-//        String saveFilePath = "D://新建文件夹 (4)//house//src//main//webapp//housepic";
-//        // 新的图片名称
-//        String newFileName = UUID.randomUUID() + oldFileName.substring(oldFileName.lastIndexOf("."));
-//        // 新图片
-//        File newFile = new File(saveFilePath + "\\" + newFileName);
-//        // 将内存中的数据写入磁盘
-//        newpic.transferTo(newFile);
-//        // 将路径名存入全局变量mynewpic
-//        mynewpic = "./housepic/"+newFileName;
-        return "/admin/tgls/goodsManage/goods_add.html";
-    }
 
 
-    @RequestMapping("admin/product/uploadFile")
-    public void insert(HttpServletRequest request, HttpServletResponse response
-            , @RequestParam("file") MultipartFile[] file) throws Exception{
-        System.out.println("test");
-        if(file!=null&&file.length>0){
-            //组合image名称，“;隔开”
-            List<String> fileName =new ArrayList<String>();
 
+
+    /**
+    * @Description: upload picture
+    * @Param: [file, request]
+    * @return: java.util.Map
+    * @Author: Yilin Lou
+    * @Date: 8/13/20
+    */
+    @ResponseBody       //return JSON
+    @RequestMapping("upload-picture")
+    public Map upload(MultipartFile file, Pictures picture){
+        System.out.println("product_id :"+ product_id);
+        picture.setProduct_id(product_id);
+        String prefix="";
+        String dateStr="";
+        //保存上传
+        OutputStream out = null;
+        InputStream fileInput=null;
+        try{
+            if(file!=null){
+                String originalName = file.getOriginalFilename();
+                prefix=originalName.substring(originalName.lastIndexOf(".")+1);
+                Date date = new Date();
+                String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                dateStr = simpleDateFormat.format(date);
+                File path = new File(ResourceUtils.getURL("classpath:").getPath());
+                File upload = new File(path.getAbsolutePath(),"static/img/productsIMG/");
+                String filepath = upload.getAbsolutePath() +"/"+ dateStr+"/"+uuid+"." + prefix;
+                File files=new File(filepath);
+                System.out.println(filepath);
+                if(!files.getParentFile().exists()){
+                    files.getParentFile().mkdirs();
+                    System.out.println("getparentfile");
+                }
+                file.transferTo(files);
+                Map<String,Object> map2=new HashMap<>();
+                Map<String,Object> map=new HashMap<>();
+                map.put("code",0);
+                map.put("msg","");
+                map.put("data",map2);
+                map2.put("src",upload.getAbsolutePath() +"/"+ dateStr+"/"+uuid+"." + prefix);
+                System.out.println(map);
+                picture.setPicture_url(filepath);
+                Pictures picture1=adminProductService.save(picture);
+                System.out.println(picture1.getPicture_id());
+                System.out.println(picture1.getPicture_url());
+                System.out.println(picture1.getProduct_id());
+                return map;
+            }
+
+        }catch (Exception e){
+        }finally{
             try {
-                for (int i = 0; i < file.length; i++) {
-                    if (!file[i].isEmpty()) {
-                        System.out.println(file[i]);
-
-                        //上传文件，随机名称，";"分号隔开
-//                        fileName.add(FileUtil.uploadImage(request, "/upload/"+TimeUtils.formateString(new Date(), "yyyy-MM-dd")+"/", file[i], true));
-                    }
+                if(out!=null){
+                    out.close();
                 }
-
-                //上传成功
-                if(fileName!=null&&fileName.size()>0){
-                    System.out.println("上传成功！");
-//                    Constants.printJson(response, fileName);;
-                }else {
-//                    Constants.printJson(response, "上传失败！文件格式错误！");
+                if(fileInput!=null){
+                    fileInput.close();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-//                Constants.printJson(response, "上传出现异常！异常出现在：class.UploadController.insert()");
+            } catch (IOException e) {
             }
         }
-//        else {
-//            Constants.printJson(response, "没有检测到文件！");
-//        }
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",1);
+        map.put("msg","");
+        return map;
+
     }
+    @ResponseBody
+    @RequestMapping(value="product/getProduct_id",method = RequestMethod.POST)
+    public void get_productId(HttpServletRequest request){
+        String id=request.getParameter("product_id");
+        this.product_id=id;
+    }
+
 
 
 

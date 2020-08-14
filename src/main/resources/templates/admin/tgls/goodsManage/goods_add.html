@@ -95,127 +95,202 @@
                 <textarea name="desc" class="layui-textarea"></textarea>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">Stock</label>
-            <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
-                    <option value="0">In stock</option>
-                    <option value="1">Out of stock</option>
-                    <option value="2">Running low</option>
-                </select>
-            </div>
-        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">Suppliers</label>
             <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
+                <select name="supplier" id="supplier" lay-filter="supplier">
                     <option value="">Select a supplier</option>
                     <option th:each="contact_name:${all_contact_name}" th:text="${contact_name}"
                             th:value="${contact_name}"></option>
                 </select>
             </div>
         </div>
+        <input type="hidden" name="product_id" id="product_id" th:value="${product_id}">
+<!--        <div class="layui-form-item">-->
+<!--            <label class="layui-form-label">商品图片</label>-->
+<!--            <div class="layui-upload-drag" id="goodsPic">-->
+<!--                <i class="layui-icon"></i>-->
+<!--                <p>点击上传，或将文件拖拽到此处</p>-->
+<!--            </div>-->
+<!--        </div>-->
 
-
-    <div class="post-section post-img">
-
-        <div>
-            <div class="file-loading">
-                <input id="file-0c" name="file" class="myfile" type="file" multiple data-min-file-count="1" data-theme="fas" th:multiple="multiple">
+        <input type="hidden" name="images" class="image">
+        <div class="layui-form-item">
+            <label class="layui-form-label ">Pictures:</label>
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="test2">多图片上传</button>
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                    预览图：
+                    <div class="layui-upload-list" id="demo2"></div>
+                </blockquote>
             </div>
-            <hr>
-
-            <div class="img-upload-instruction alert alert-danger">
-                <p>Recommended image size to (870x493)px</p>
-                <p>Image maximum size 3 MB.</p>
-                <p>Allowed image type (png, jpg, jpeg).</p>
-                <p>You can upload up to 5 images.</p>
-            </div>
-            <hr>
         </div>
 
-    </div>
+
+<!--        <div class="layui-form-item">-->
+<!--            <label class="layui-form-label">Pictures</label>-->
+
+<!--            <div class="post-section post-img">-->
+<!--                <div class="file-loading">-->
+<!--                    <input id="file-0c" name="file" class="myfile" type="file" multiple data-min-file-count="1" data-theme="fas" th:multiple="multiple">-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--                <div class="img-upload-instruction alert alert-danger">-->
+<!--&lt;!&ndash;                    <p>Recommended image size to (870x493)px</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p>Image maximum size 3 MB.</p>&ndash;&gt;-->
+<!--                    <p>Allowed image type (png, jpg, jpeg).</p>-->
+<!--                    <p>You can upload up to 5 images.</p>-->
+<!--                </div>-->
+<!--                <hr>-->
+<!--            </div>-->
+<!--        </div>-->
+
 
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
-                <button type="submit">submit</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
-<!--    <script>-->
-<!--        layui.use(['upload', 'form'], function () {-->
-<!--            var form = layui.form;-->
-<!--            var upload = layui.upload;-->
-<!--            var layer = layui.layer;-->
-<!--            //监听提交-->
-<!--            form.on('submit(submitBut)', function (data) {-->
-<!--                return false;-->
-<!--            });-->
-<!--            // form.verify({-->
-<!--            //     //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]-->
-<!--            //     ZHCheck: [-->
-<!--            //         /^[\u0391-\uFFE5]+$/-->
-<!--            //         , '只允许输入中文'-->
-<!--            //     ]-->
-<!--            // });-->
-<!--            //拖拽上传-->
-<!--            upload.render({-->
-<!--                elem: '#goodsPic',-->
-<!--                url: '/upload/',-->
-<!--                done: function (res) {-->
-<!--                    console.log(res)-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-
     <script>
-        $(".myfile").fileinput({
-            uploadUrl:"/admin/product/uploadFile", //接受请求地址
-            uploadAsync : true, //默认异步上传
-            showUpload : false, //是否显示上传按钮,跟随文本框的那个
-            showRemove : false, //显示移除按钮,跟随文本框的那个
-            showCaption : true,//是否显示标题,就是那个文本框
-            showPreview : true, //是否显示预览,不写默认为true
-            dropZoneEnabled : false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
-            //minImageWidth: 50, //图片的最小宽度
-            //minImageHeight: 50,//图片的最小高度
-            //maxImageWidth: 1000,//图片的最大宽度
-            //maxImageHeight: 1000,//图片的最大高度
-            //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
-            //minFileCount: 0,
-            maxFileCount : 5, //表示允许同时上传的最大文件个数
-            enctype : 'multipart/form-data',
-            validateInitialCount : true,
-            previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
-            msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-            allowedFileTypes : [ 'image' ],//配置允许文件上传的类型
-            allowedPreviewTypes : [ 'image' ],//配置所有的被预览文件类型
-            allowedPreviewMimeTypes : [ 'jpg', 'png', 'gif' ],//控制被预览的所有mime类型
-            // language : 'en'
-        })
-        //异步上传返回结果处理
-        $('.myfile').on('fileerror', function(event, data, msg) {
-            console.log("fileerror");
-            console.log(data);
+        layui.use(['form'], function () {
+            var form = layui.form;
+            var upload = layui.upload;
+            var layer = layui.layer;
+            //监听提交
+            form.on('submit(submitBut)', function (data) {
+                return false;
+            });
+            form.verify({
+                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+                ZHCheck: [
+                    /^[\u0391-\uFFE5]+$/
+                    , '只允许输入中文'
+                ]
+            });
+            //拖拽上传
+            upload.render({
+                elem: '#goodsPic',
+                url: '/upload/',
+                done: function (res) {
+                    console.log(res)
+                }
+            });
         });
-        // //异步上传返回结果处理
-        // $(".myfile").on("fileuploaded", function(event, data, previewId, index) {
-        //     console.log("fileuploaded");
-        //     var ref = $(this).attr("data-ref");
-        //     $("input[name='" + ref + "']").val(data.response.url);
-        //
-        // });
-        //
-        // //上传前
-        // $('.myfile').on('filepreupload', function(event, data, previewId, index) {
-        //     console.log("filepreupload");
-        // });
-
     </script>
 
+
+<!--    <script>-->
+<!--        layui.use('upload', function(){-->
+<!--            var $ = layui.jquery-->
+<!--                ,upload = layui.upload;-->
+
+<!--            //普通图片上传-->
+<!--            var uploadInst = upload.render({-->
+<!--                elem: '#test1'-->
+<!--                ,url: '/upload/'-->
+<!--                ,accept:'images'-->
+<!--                ,size:50000-->
+<!--                ,multiple: true-->
+<!--                ,before: function(obj){-->
+<!--                    //预读本地文件示例，不支持ie8-->
+<!--                    obj.preview(function(index, file, result){-->
+<!--                        $('#demo1').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')-->
+<!--                    });-->
+<!--                }-->
+<!--                ,done: function(res){-->
+<!--                    //如果上传失败-->
+<!--                    if(res.code > 0){-->
+<!--                        return layer.msg('Upload failed');-->
+<!--                    }-->
+<!--                    //上传成功-->
+<!--                    var demoText = $('#demoText');-->
+<!--                    demoText.html('<span style="color: #4cae4c;">Upload Successful</span>');-->
+
+<!--                    var fileupload = $(".image");-->
+<!--                    fileupload.attr("value",res.data.src);-->
+<!--                    console.log(fileupload.attr("value"));-->
+<!--                }-->
+<!--                ,error: function(){-->
+<!--                    //演示失败状态，并实现重传-->
+<!--                    var demoText = $('#demoText');-->
+<!--                    demoText.html('<span style="color: #FF5722;">Upload failed</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');-->
+<!--                    demoText.find('.demo-reload').on('click', function(){-->
+<!--                        uploadInst.upload();-->
+<!--                    });-->
+<!--                }-->
+<!--            });-->
+
+
+
+<!--        });-->
+<!--    </script>-->
+    <script>
+        layui.use('upload', function(){
+            var $ = layui.jquery
+                ,upload = layui.upload;
+
+            //普通图片上传
+            var uploadInst =
+                upload.render({
+                elem: '#test1'
+                ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+                    //如果上传失败
+                    if(res.code > 0){
+                        return layer.msg('上传失败');
+                    }
+                    //上传成功
+                }
+                ,error: function(){
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+
+            //多图片上传
+            upload.render({
+                elem: '#test2'
+                ,url: '/upload-picture' //改成您自己的上传接口
+                ,multiple: true
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
+                    // send product_id used to save imag
+                    var product_id = $("#product_id").val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/product/getProduct_id",
+                        dataType: "json",
+                        data:{'product_id':JSON.stringify(product_id)}
+                    })
+                }
+                ,done: function(res){
+                    //如果上传失败
+                    if(res.code > 0){
+                        return layer.msg('Upload failed');
+                    }
+
+                    //上传成功
+                }
+            });
+
+        });
+    </script>
 
 </div>
 </body>

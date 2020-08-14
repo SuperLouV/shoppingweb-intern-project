@@ -67,6 +67,8 @@ img{
 	padding: 10px;
 	display: block;
 	overflow-y: auto;
+	overflow-x: auto;
+
 	position: relative;
 }
 i.bt{

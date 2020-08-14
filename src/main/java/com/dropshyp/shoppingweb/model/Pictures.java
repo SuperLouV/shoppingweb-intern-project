@@ -23,7 +23,7 @@ public class Pictures {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long picture_id;
 
-    private long product_id;
+    private String product_id;
 
     private String picture_url;
 
@@ -35,11 +35,11 @@ public class Pictures {
         this.picture_id = picture_id;
     }
 
-    public long getProduct_id() {
+    public String getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(long product_id) {
+    public void setProduct_id(String product_id) {
         this.product_id = product_id;
     }
 
