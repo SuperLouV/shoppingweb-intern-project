@@ -68,6 +68,9 @@
 <body>
 <div class="cBody">
     <form id="addForm" class="layui-form" th:action="@{/admin/product/productAdd}" method="post">
+<!--         product_id-->
+        <input type="hidden" name="product_id" id="product_id" th:value="${product_id}">
+
         <div class="layui-form-item">
             <label class="layui-form-label">Name</label>
             <div class="layui-input-block">
@@ -78,13 +81,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Price</label>
             <div class="layui-input-block">
-                <input type="text" name="company" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="price" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">Stock</label>
             <div class="layui-input-block">
-                <input type="text" name="price" required lay-verify="required|number" autocomplete="off"
+                <input type="text" name="stock" required lay-verify="required|number" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
@@ -92,21 +95,20 @@
         <div class="layui-form-item">
             <label class="layui-form-label">Description</label>
             <div class="layui-input-block">
-                <textarea name="desc" class="layui-textarea"></textarea>
+                <textarea name="description" class="layui-textarea"></textarea>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">Suppliers</label>
             <div class="layui-input-inline">
-                <select name="supplier" id="supplier" lay-filter="supplier">
+                <select name="supplier_name" id="supplier" lay-filter="supplier">
                     <option value="">Select a supplier</option>
                     <option th:each="contact_name:${all_contact_name}" th:text="${contact_name}"
                             th:value="${contact_name}"></option>
                 </select>
             </div>
         </div>
-        <input type="hidden" name="product_id" id="product_id" th:value="${product_id}">
 <!--        <div class="layui-form-item">-->
 <!--            <label class="layui-form-label">商品图片</label>-->
 <!--            <div class="layui-upload-drag" id="goodsPic">-->
@@ -149,8 +151,9 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="submit" class="layui-btn layui-btn-primary">Submit</button>
+<!--                <button type="submit">submit</button>-->
+                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
             </div>
         </div>
     </form>
