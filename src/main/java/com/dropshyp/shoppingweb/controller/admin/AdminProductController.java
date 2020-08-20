@@ -78,12 +78,6 @@ public class AdminProductController {
     public String addGoods(Products products, Model model) {
         List<String> all_contact_name = productListService.findAllContact_name();
         model.addAttribute("all_contact_name", all_contact_name);
-        System.out.println(products.getSupplier_name());
-        System.out.println(products.getProduct_id());
-        System.out.println(products.getName());
-        System.out.println(products.getPrice());
-        System.out.println(products.getStock());
-        System.out.println(products.getDescription());
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateStr = simpleDateFormat.format(date);
