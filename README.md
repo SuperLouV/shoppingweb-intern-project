@@ -41,5 +41,5 @@ Used to control error **(not be used)**
 ### Datebase
 https://dbdiagram.io/d/5f0f803274ca2227330d67c5
 ## Technologies
-
+Database: MySQL
 ## Detailes
