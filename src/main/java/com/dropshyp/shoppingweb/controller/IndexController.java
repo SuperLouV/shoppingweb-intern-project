@@ -18,7 +18,7 @@ public class IndexController {
     }
 
     /**
-     * 访问根目录转发到首页
+     * visit index
      * @return
      */
     @RequestMapping("/")
