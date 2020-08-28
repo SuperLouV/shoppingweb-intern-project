@@ -42,4 +42,14 @@ Used to control error **(not be used)**
 https://dbdiagram.io/d/5f0f803274ca2227330d67c5
 ## Technologies
 Database: MySQL
+Cache: Redis
+Backend: Java
+-Framwork: Spring Boot
+Front: HTML/CSS JS Ajax Jquery Bootstrap
+-Framwork: Thymeleaf
+
 ## Detailes
+Build shopping web database before running code
+Set your own Mysql username and password in src/main/resources/config/application.yml
+Run src/main/java/com/dropshyp/shoppingweb/doc/db/category.sql to insert categories
+All orignal templates will be uploaded on Github
